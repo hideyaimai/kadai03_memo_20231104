@@ -7,37 +7,56 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1 class="title">じゃんけんアプリ</h1>
+    <div class="playerScreen">
+        <h1 class="title">じゃんけんアプリ</h1>
+        <div class="hands">
 
-    <div class="hands">
-
-        <div class="myhand">
-            <img src="img/door.jpeg" alt="ドア" class="myhandpicture">
-        </div>
+            <div class="myhand">
+                <img src="img/door.jpeg" alt="ドア" class="myhandpicture">
+            </div>
+            
+            <div class="vstext">
+                <img src="img/vsblack.jpeg" alt="vsの画像" class="vsimg">
+            </div>
+    
+            <div class="enemyhand">
+                <img src="img/door.jpeg" alt="グー" class="enemyhandpicture">
+            </div>
         
-        <div class="vstext">
-            <img src="img/vsblack.jpeg" alt="vsの画像" class="vsimg">
-        </div>
-
-        <div class="enemyhand">
-            <img src="img/door.jpeg" alt="グー" class="enemyhandpicture">
         </div>
     
+        <div class="result">
+            <h1 class="resulttext">手を選択</h1>
+        </div>
+    
+        <div class="handchoice">
+            <img src="img/janken_gu.png" alt="グーの画像" class="pickgu">
+            <img src="img/janken_choki.png" alt="チョキの画像" class="pickchoki">
+            <img src="img/janken_pa.png" alt="パーの画像" class="pickpa">
+        </div>
+    
+        <div class="confirm">
+            <p class="confirmbutton">確定する</p>
+        </div>
     </div>
 
-    <div class="result">
-        <h1 class="resulttext">手を選択</h1>
-    </div>
+    <div class="logScreen">
+        <h2 class="logtext">戦績</h2>
+        
+        <div class="numbers">
+            <p class="winningRate">勝率</p>
+            <p class="consectiveWins">連勝数</p>
+        </div>
 
-    <div class="handchoice">
-        <img src="img/janken_gu.png" alt="グーの画像" class="pickgu">
-        <img src="img/janken_choki.png" alt="チョキの画像" class="pickchoki">
-        <img src="img/janken_pa.png" alt="パーの画像" class="pickpa">
-    </div>
+        <div class="logBox">
+            <p>履歴</p>
+        </div>
 
-    <div class="confirm">
-        <p class="confirmbutton">確定する</p>
+        <div class="comment">
+            <p class="commentText">コメント</p>
+        </div>
     </div>
+    
 
     <!-- jqueryの読み込み -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
