@@ -1,7 +1,6 @@
 let playerhands = "";
 let computerhands = "";
 let result = "";
-let wins = "";
 
 // computerhandsをランダムに変更します。
 $(".pickgu,.pickchoki,.pickpa").on("click",function () {
@@ -128,5 +127,9 @@ $(".confirmbutton").on("click", function() {
         $(".pickchoki").css("background-color", "");
         $(".pickpa").css("background-color", "");
     }, 5000);
+
+    let value = playerhands+"と"+computerhands+"に"+result;
+    localStorage.setItem(result, value);
+
 });
 
