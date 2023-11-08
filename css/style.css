@@ -97,3 +97,7 @@ body {
 .confirmbutton:hover {
     background-color: rgba(237, 202, 196, 0.4);
 }
+
+.logList{
+    color: white;
+}

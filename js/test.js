@@ -1,6 +1,6 @@
 let playerhands = "";
 let computerhands = "";
-let result = "";
+let matchResult = "";
 
 // computerhandsをランダムに変更します。
 $(".pickgu,.pickchoki,.pickpa").on("click",function () {
@@ -43,37 +43,37 @@ $(".pickpa").on("click",function(){
 // 以下3つはresultを変更します。
 $(".pickpa").on("click",function() {
     if(computerhands === "グー"){
-        result = "勝ち"
+        matchResult = "勝ち"
     }
     else if(computerhands === "チョキ"){
-        result = "負け"
+        matchResult = "負け"
     }
     else{
-        result = "あいこ"
+        matchResult = "あいこ"
     }
 });
 
 $(".pickgu").on("click",function() {
     if(computerhands === "グー"){
-        result = "あいこ"
+        matchResult = "あいこ"
     }
     else if(computerhands === "チョキ"){
-        result = "勝ち"
+        matchResult = "勝ち"
     }
     else{
-        result = "負け"
+        matchResult = "負け"
     }
 });
 
 $(".pickchoki").on("click",function() {
     if(computerhands === "グー"){
-        result = "負け"
+        matchResult = "負け"
     }
     else if(computerhands === "チョキ"){
-        result = "あいこ"
+        matchResult = "あいこ"
     }
     else{
-        result = "勝ち"
+        matchResult = "勝ち"
     }
 });
 
@@ -109,9 +109,9 @@ $(".confirmbutton").on("click", function() {
 
     // じゃんけんの結果
     setTimeout(function() {
-        if (result === "勝ち") {
+        if (matchResult === "勝ち") {
             $(".resulttext").html("勝ち").css("text-shadow","0 0 20px red, 0 0 20px red, 0 0 30px red, 0 0 30px red");
-        } else if (result === "あいこ") {
+        } else if (matchResult === "あいこ") {
             $(".resulttext").html("あいこ").css("text-shadow","0 0 20px white, 0 0 20px red, 0 0 30px white, 0 0 30px white");
         } else {
             $(".resulttext").html("負け").css("text-shadow","0 0 20px blue, 0 0 20px blue, 0 0 30px blue, 0 0 30px blue");
@@ -128,8 +128,29 @@ $(".confirmbutton").on("click", function() {
         $(".pickpa").css("background-color", "");
     }, 5000);
 
-    let value = playerhands+"と"+computerhands+"に"+result;
-    localStorage.setItem(result, value);
+    // ローカルストレージにデータを格納
+    let value = playerhands+"と"+computerhands+"で"+matchResult;
+    localStorage.setItem(matchResult, value);
+
+    // ローカルストレージのデータをlistに表示
+    let html = `
+    <li>
+    <p>${matchResult}${value}</p>
+    </li>
+    `;
+        $(".logList").append(html);
 
 });
+
+for( let i=0 ; i<localStorage.length ; i++) {
+    let result = localStorage.key(i);
+    let value =localStorage.getItem(result);
+    let html = `
+    <li>
+    <p>${result}</p>
+        <p>${value}</p>
+    </li>
+    `;
+    $(".logList").append(html);
+}
 
