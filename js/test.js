@@ -107,7 +107,7 @@ $(".confirmbutton").on("click", function() {
         }
     }, 1500);
 
-    // じゃんけんの結果
+    // じゃんけんの結果を結果を履歴に表示する
     setTimeout(function() {
         if (matchResult === "勝ち") {
             $(".resulttext").html("勝ち").css("text-shadow","0 0 20px red, 0 0 20px red, 0 0 30px red, 0 0 30px red");
@@ -116,6 +116,14 @@ $(".confirmbutton").on("click", function() {
         } else {
             $(".resulttext").html("負け").css("text-shadow","0 0 20px blue, 0 0 20px blue, 0 0 30px blue, 0 0 30px blue");
         }
+        
+        // ローカルストレージのデータをlistに表示
+        let html = `
+        <li>
+            <p>${value}（<span class="small-text">${key}</span>）</p>
+        </li>
+        `;
+            $(".logList").append(html);
     }, 2500); 
 
     // リセット
@@ -129,28 +137,26 @@ $(".confirmbutton").on("click", function() {
     }, 5000);
 
     // ローカルストレージにデータを格納
-    let value = playerhands+"と"+computerhands+"で"+matchResult;
-    localStorage.setItem(matchResult, value);
-
-    // ローカルストレージのデータをlistに表示
-    let html = `
-    <li>
-    <p>${key}${value}</p>
-    </li>
-    `;
-        $(".logList").append(html);
+    let currentDate = new Date();
+    let key = currentDate.toLocaleString('ja-JP'); 
+    let value = playerhands+"に"+computerhands+"をだして"+matchResult;
+    localStorage.setItem(key, value);
 
 });
 
+// ローカルストレージの内容を表示
 for( let i=0 ; i<localStorage.length ; i++) {
-    let result = localStorage.key(i);
-    let value =localStorage.getItem(result);
+    let key = localStorage.key(i);
+    let value =localStorage.getItem(key);
     let html = `
     <li>
-    <p>${result}</p>
-        <p>${value}</p>
+        <p>${value}（<span class="small-text">${key}</span>）</p>
     </li>
     `;
     $(".logList").append(html);
 }
 
+$(".clear").on("click", function() {
+    localStorage.clear();
+    $(".logList").empty();
+});

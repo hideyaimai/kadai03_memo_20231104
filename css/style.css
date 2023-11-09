@@ -98,6 +98,25 @@ body {
     background-color: rgba(237, 202, 196, 0.4);
 }
 
+.ligBoxText {
+    display: flex;
+    margin: auto;
+}
+
+.textLog {
+    margin: auto;
+}
+
+.clear {
+    margin: auto;
+}
+
 .logList{
-    color: white;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+/* jsでリストに追加されたhtmlの編集 */
+.small-text{
+    font-size: 12px;
 }
