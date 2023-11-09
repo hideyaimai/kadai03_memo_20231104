@@ -135,7 +135,7 @@ $(".confirmbutton").on("click", function() {
     // ローカルストレージのデータをlistに表示
     let html = `
     <li>
-    <p>${matchResult}${value}</p>
+    <p>${key}${value}</p>
     </li>
     `;
         $(".logList").append(html);
