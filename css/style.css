@@ -116,6 +116,10 @@ body {
     overflow-y: scroll;
 }
 
+.buttons {
+    display: flex;
+}
+
 /* jsでリストに追加されたhtmlの編集 */
 .small-text{
     font-size: 12px;

@@ -136,7 +136,7 @@ $(".confirmbutton").on("click", function() {
         $(".pickpa").css("background-color", "");
     }, 5000);
 
-    // ローカルストレージにデータを格納
+    // ローカルストレージにじゃんけんデータを格納
     let currentDate = new Date();
     let key = currentDate.toLocaleString('ja-JP'); 
     let value = playerhands+"に"+computerhands+"をだして"+matchResult;
@@ -144,7 +144,7 @@ $(".confirmbutton").on("click", function() {
 
 });
 
-// ローカルストレージの内容を表示
+// ローカルストレージのじゃんけん内容を表示
 for( let i=0 ; i<localStorage.length ; i++) {
     let key = localStorage.key(i);
     let value =localStorage.getItem(key);
@@ -160,3 +160,30 @@ $(".clear").on("click", function() {
     localStorage.clear();
     $(".logList").empty();
 });
+
+// ローカルストレージにコメントデータを格納&表示
+$(".commentSave").on("click",function(){
+    let currentDate = new Date();
+    let commentkey = currentDate.toLocaleString('ja-JP'); 
+    let value = $("#commentList").val();
+    localStorage.setItem(commentkey, value);
+
+    let html = `
+        <li>
+            <p>${value}</p>
+        </li>
+        `;
+            $(".commentLog").append(html);
+});
+
+// ローカルストレージのコメント内容を表示
+for( let i=0 ; i<localStorage.length ; i++) {
+    let key = localStorage.key(i);
+    let value =localStorage.getItem(key);
+    let html = `
+    <li>
+        <p>${value}</p>
+    </li>
+    `;
+    $(".commentLog").append(html);
+}
