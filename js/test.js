@@ -187,3 +187,8 @@ for( let i=0 ; i<localStorage.length ; i++) {
     `;
     $(".commentLog").append(html);
 }
+
+$(".commentclear").on("click", function() {
+    localStorage.clear();
+    $(".commentLog").empty();
+});
