@@ -185,7 +185,7 @@ for( let i=0 ; i<localStorage.length ; i++) {
         <p>${value}</p>
     </li>
     `;
-    $(".commentLog").append(html);
+    $(".commentLog").app        end(html);
 }
 
 $(".commentclear").on("click", function() {
